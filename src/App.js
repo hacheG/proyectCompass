@@ -1,19 +1,23 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import './App.css';
 
-import Camera from 'react-html5-camera-photo';
+//import Camera from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
-import download from 'downloadjs';
+//import download from 'downloadjs';
+import Mapa from './Mapa/Mapa'
+
 
 class App extends Component {
+render() {
+  return (
+    <div className='App'>
+      <Mapa />
 
-  return () {
-    <Map/>
+    </div>
 
-  }
-  
-
+  );
+}
 }
 /*
 function App (props) {
