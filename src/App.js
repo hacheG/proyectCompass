@@ -1,26 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Camera from 'react-html5-camera-photo';
+import 'react-html5-camera-photo/build/css/index.css';
+import download from 'downloadjs';
+
+class App extends Component {
+
+  return () {
+    <Map/>
+
+  }
+  
+
 }
+/*
+function App (props) {
+  function handleTakePhoto (dataUri) {
+    // Do stuff with the photo...
+    console.log('takePhoto');
+    console.log(dataUri)
+    
+    download(dataUri, "dlDataUrlText.png", "image/png");
+
+
+
+  }
+ 
+  return (
+    
+    <Camera
+      onTakePhoto = { (dataUri) => { handleTakePhoto(dataUri);
+      } }
+    />
+    
+  );
+}*/
 
 export default App;
