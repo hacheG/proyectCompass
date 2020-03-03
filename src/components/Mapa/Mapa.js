@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import './Mapa.css';
-//import { render } from 'react-dom'
-//import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
-//import { Map, Marker, Popup, TileLayer, ZoomControl, ScaleControl } from 'leaflet';
 import L from 'leaflet'
 import laImangen from '../../giphy.gif'
 
@@ -17,9 +14,7 @@ class Mapa extends Component{
             iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
             popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
         });
-        
-        
-        
+            
         return (
             <LeafletMap
             center={[4.652881, -74.057582]}
@@ -52,24 +47,4 @@ class Mapa extends Component{
     }
 } 
 
-
-
-
-
-
-
-/*
-{
-   render() 
-    {
-
-    
-        return (
-             <div>"S3"</div>
-             
-
-        )
-    }
-}
-*/
 export default Mapa;
