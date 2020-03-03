@@ -3,6 +3,8 @@ import './Mapa.css';
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet'
 import laImangen from '../../giphy.gif'
+import activePark from './MapaData'
+import MapaData from './MapaData'
 
 class Mapa extends Component{
     render() {
@@ -34,14 +36,16 @@ class Mapa extends Component{
 
         <Marker position={[4.652881, -74.057582] } icon = {greenIcon}>
             <Popup>
-            Popup for any custom information.
+            aqui esta Holberton
             </Popup>
         </Marker>
         <Marker position={[6, -70.057582] } icon = {greenIcon}>
             <Popup>
-            Popup for any custom information.
+           algo
             </Popup>
         </Marker>
+  )}
+
         </LeafletMap>
       );
     }
