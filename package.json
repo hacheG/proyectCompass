@@ -8,9 +8,12 @@
     "@testing-library/user-event": "^7.2.1",
     "base64-img": "^1.0.4",
     "downloadjs": "^1.4.7",
+    "leaflet": "^1.6.0",
+    "osm": "^1.0.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-html5-camera-photo": "^1.5.4",
+    "react-leaflet": "^2.6.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0"
   },
