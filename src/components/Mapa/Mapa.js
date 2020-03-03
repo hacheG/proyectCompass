@@ -3,11 +3,15 @@ import './Mapa.css';
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet'
 import laImangen from '../../giphy.gif'
-import activePark from './MapaData'
-import MapaData from './MapaData'
+import axios  from 'axios';
 
 class Mapa extends Component{
     render() {
+         axios.get(`http://localhost:5000/api/location`)
+            .then(res => {
+                console.log(res.data)
+                
+          })
 
         var greenIcon = L.icon({
             iconUrl: laImangen,
