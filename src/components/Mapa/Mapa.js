@@ -10,7 +10,7 @@ class Mapa extends Component{
         <LeafletMap
           center={[50, 10]}
           zoom={6}
-          maxZoom={10}
+          maxZoom={15}
           attributionControl={true}
           zoomControl={true}
           doubleClickZoom={true}
