@@ -1,18 +1,23 @@
 import React, {Component} from 'react';
-
+import { BrowserRouter as Router, Link, Route} from 'react-router-dom'
 import './App.css';
 
 import 'react-html5-camera-photo/build/css/index.css';
 
 import Mapa from './components/Mapa/Mapa'
-import Camara from './components/camera/camera'
+import camera from './components/camera/camera'
+
 
 class App extends Component {
 render() {
   return (
+
     <div className='App'>
-      <Mapa />
-      <Camara />
+      <Router>
+        <Mapa />
+        <Route path='/camera' component={ camera }/>
+
+      </Router>
 
     </div>
 
