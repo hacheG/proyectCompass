@@ -3,11 +3,17 @@ import './Mapa.css';
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet'
 import laImangen from '../../giphy.gif'
-import activePark from './MapaData'
-import MapaData from './MapaData'
+import axios  from 'axios';
+import CameraIcon from './CameraIcon.png'
+import { Link } from 'react-router-dom';
 
 class Mapa extends Component{
     render() {
+         axios.get(`http://localhost:5000/api/location`)
+            .then(res => {
+                console.log(res.data)
+                
+          })
 
         var greenIcon = L.icon({
             iconUrl: laImangen,
@@ -16,7 +22,7 @@ class Mapa extends Component{
             iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
             popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
         });
-            
+        
         return (
             <LeafletMap
             center={[4.652881, -74.057582]}
@@ -33,6 +39,9 @@ class Mapa extends Component{
           <TileLayer
             url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
             />
+            <Link to='/camera'>
+                <img className='laCamara' src= {CameraIcon} alt='icono camara'  />
+            </Link>
 
         <Marker position={[4.652881, -74.057582] } icon = {greenIcon}>
             <Popup>
@@ -47,6 +56,10 @@ class Mapa extends Component{
   )}
 
         </LeafletMap>
+        
+
+        
+            
       );
     }
 } 
