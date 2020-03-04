@@ -2,66 +2,74 @@ import React, {Component} from 'react';
 import './Mapa.css';
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet'
-import laImangen from '../../giphy.gif'
+import CustomMarker from '../../giphy.gif'
 import axios  from 'axios';
 import CameraIcon from './CameraIcon.png'
 import { Link } from 'react-router-dom';
 
 class Mapa extends Component{
-    render() {
-         axios.get(`http://localhost:5000/api/location`)
-            .then(res => {
-                console.log(res.data)
-                
-          })
 
-        var greenIcon = L.icon({
-            iconUrl: laImangen,
-        
+  state = {
+      locations:{}
+  };
+
+  componentDidMount(){
+      this.getLocations()
+  }
+    getLocations = async () => {
+        let res = await axios.get('http://localhost:5000/api/location');
+        this.setState({locations: res.data})
+    };
+
+    render() {
+        let greenIcon = L.icon({
+            iconUrl: CustomMarker,
             iconSize:     [20, 20], // size of the icon
             iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
             popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
         });
-        
+
         return (
-            <LeafletMap
-            center={[4.652881, -74.057582]}
-            zoom={12}
-            maxZoom={15}
-            attributionControl={true}
-            zoomControl={true}
-            doubleClickZoom={true}
-            scrollWheelZoom={true}
-            dragging={true}
-            animate={true}
-            easeLinearity={0.35}
-            >
-          <TileLayer
-            url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-            />
-            <Link to='/camera'>
-                <img className='laCamara' src= {CameraIcon} alt='icono camara'  />
-            </Link>
+            <div>
+                { this.state.locations.locations === undefined ?(
+                    <div><h1>Loading ... </h1></div>):(
+                    <LeafletMap
+                        center={[4.652881, -74.057582]}
+                        zoom={12}
+                        maxZoom={15}
+                        attributionControl={true}
+                        zoomControl={true}
+                        doubleClickZoom={true}
+                        scrollWheelZoom={true}
+                        dragging={true}
+                        animate={true}
+                        easeLinearity={0.35}
+                    >
+                        <TileLayer url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
+                        <Link to='/camera'>
+                            <img className='laCamara' src= {CameraIcon} alt='icono camara'  />
+                        </Link>
+                        {
+                            this.state.locations.locations.map(location => (
+                                <Marker
+                                    key={location.properties.PARK_ID}
+                                    position={[
+                                        location.geometry.coordinates[1],
+                                        location.geometry.coordinates[0]
+                                    ]}
+                                    icon = {greenIcon}
+                                >
+                                    <Popup> Something </Popup>
+                                </Marker>
+                            ))
+                        }
 
-        <Marker position={[4.652881, -74.057582] } icon = {greenIcon}>
-            <Popup>
-            aqui esta Holberton
-            </Popup>
-        </Marker>
-        <Marker position={[6, -70.057582] } icon = {greenIcon}>
-            <Popup>
-           algo
-            </Popup>
-        </Marker>
-  )}
-
-        </LeafletMap>
-        
-
-        
-            
+                    </LeafletMap>
+                    )
+                }
+            </div>
       );
     }
-} 
+}
 
 export default Mapa;

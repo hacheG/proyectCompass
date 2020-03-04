@@ -4,8 +4,7 @@ const router = express.Router();
 router.get('/', (req, res, next) => {
 
     res.status(200).json({
-        locations: {
-        "features": [
+        locations: [
             {
                 "type": "Feature",
                 "properties": {
@@ -21,7 +20,7 @@ router.get('/', (req, res, next) => {
             {
             "type": "Feature",
             "properties": {
-                "PARK_ID": 1219,
+                "PARK_ID": 961,
                 "NAME": "iglesia lourdes",
                 "DESCRIPTIO": "iglesia lourdes"
             },
@@ -33,7 +32,7 @@ router.get('/', (req, res, next) => {
             {
                 "type": "Feature",
                 "properties": {
-                    "PARK_ID": 1219,
+                    "PARK_ID": 962,
                     "NAME": "parque nacional",
                     "DESCRIPTIO": "parque nacional"
                 },
@@ -45,7 +44,7 @@ router.get('/', (req, res, next) => {
             {
                 "type": "Feature",
                 "properties": {
-                    "PARK_ID": 1219,
+                    "PARK_ID": 963,
                     "NAME": "UD",
                     "DESCRIPTIO": "UD"
                 },
@@ -57,7 +56,7 @@ router.get('/', (req, res, next) => {
             {
                 "type": "Feature",
                 "properties": {
-                    "PARK_ID": 1219,
+                    "PARK_ID": 964,
                     "NAME": "monumento a los heroes",
                     "DESCRIPTIO": "monumento a los heroes"
                 },
@@ -67,7 +66,6 @@ router.get('/', (req, res, next) => {
                 }
             }
         ]
-        }
     });
 });
 

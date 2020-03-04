@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Link, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 import './App.css';
 
 import 'react-html5-camera-photo/build/css/index.css';
@@ -16,9 +16,7 @@ render() {
       <Router>
         <Mapa />
         <Route path='/camera' component={ camera }/>
-
       </Router>
-
     </div>
 
   );
