@@ -8,6 +8,9 @@ import Mapa from './components/Mapa/Mapa'
 import camera from './components/camera/camera'
 
 
+
+
+
 class App extends Component {
 render() {
   return (
@@ -15,6 +18,7 @@ render() {
     <div className='App'>
       <Router>
         <Mapa />
+        
         <Route path='/camera' component={ camera }/>
       </Router>
     </div>
