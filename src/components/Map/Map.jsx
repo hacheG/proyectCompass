@@ -9,7 +9,8 @@ import axios from "axios";
 class Map extends Component {
     state = {
         viewport: {longitude: -74.057582, latitude: 4.652881, zoom: 12},
-        locations:{}
+        locations:{},
+        CurrentMarker: null
     };
 
     componentDidMount(){
@@ -20,6 +21,29 @@ class Map extends Component {
         let res = await axios.get('http://localhost:5000/api/location');
         this.setState({locations: res.data})
     };
+
+    _onClickMarker = location => {
+        this.setState({CurrentMarker: location});
+    };
+
+    _renderPopup() {
+        const {CurrentMarker} = this.state;
+
+        return (
+            CurrentMarker && (
+                <Popup
+                    tipSize={5}
+                    anchor="top"
+                    longitude={CurrentMarker.longitude}
+                    latitude={CurrentMarker.latitude}
+                    closeOnClick={false}
+                    onClose={() => this.setState({CurrentMarker: null})}
+                >
+                    <h1>{ CurrentMarker.name } </h1>
+                </Popup>
+            )
+        );
+    }
 
     render() {
         const {viewport} = this.state;
@@ -44,9 +68,17 @@ class Map extends Component {
                     {
                         this.state.locations.locations.map(location => (
                                 <Marker key={location.name} longitude={location.longitude} latitude={location.latitude}>
+                                    <button
+                                        onClick={() => {
+                                            this._onClickMarker(location);
+                                        }}
+                                    >
                                     <img src={CustomMarker}/>
+                                    </button>
                                 </Marker>
-                            ))
+                            ))}
+                    {
+                        this._renderPopup()
                     }
                 </ReactMapGL>
                     )}
