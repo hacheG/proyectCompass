@@ -14,12 +14,11 @@ router.get('/location', async (req, res) =>{
 router.post('/add', async (req, res) =>{
     let newLocation = new Location({
         name: req.body.name,
-        coordinates: req.body.coordinates
+        coordinates: req.body.coordinates,
+        image: req.body.image
     });
     newLocation.save((err, task) => {
-        if (err) {
-            res.status(500).send(err);
-        }
+        if (err) { res.status(500).send(err);}
         res.status(201).json(task);
     });
 });

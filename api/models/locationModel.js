@@ -10,6 +10,9 @@ let Location = new Schema({
     coordinates: {
         type: Array,
         required: true
+    },
+    image: {
+        type: String
     }
 });
 

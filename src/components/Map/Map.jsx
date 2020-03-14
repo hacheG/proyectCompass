@@ -41,6 +41,7 @@ class Map extends Component {
                     onClose={() => this.setState({CurrentMarker: null})}
                 >
                     <h1>{ CurrentMarker.name } </h1>
+                    <img src={CurrentMarker.image} />
                 </Popup>
             )
         );
