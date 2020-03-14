@@ -1,18 +1,33 @@
 import React from 'react';
 import Camera from 'react-html5-camera-photo';
 import download from 'downloadjs';
+import axios from "axios";
 
 class Camara extends React.Component {
 
-    handleTakePhoto (dataUri) {
-        console.log('Location');
-        navigator.geolocation.getCurrentPosition(position => {
-            const latitude  = position.coords.latitude;
-            const longitude = position.coords.longitude;
-            console.log(latitude, longitude)
+    async handleTakePhoto (dataUri) {
+
+
+
+        navigator.geolocation.getCurrentPosition(position=> {
+            let coordinates= [];
+            let d = new Date();
+            let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+            let name = `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+            
+            coordinates.push(position.coords.longitude.toString());
+            coordinates.push(position.coords.latitude.toString());
+            console.log(coordinates);
+
+            axios.post('http://localhost:5000/api/add', {
+                name: name,
+                coordinates: coordinates
+            })
         });
+
         console.log('takePhoto');
-        console.log(dataUri)
+        console.log(dataUri);
         download(dataUri, "dlDataUrlText.png", "image/png");
     }
 

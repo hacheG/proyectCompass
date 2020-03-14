@@ -19,7 +19,8 @@ class Map extends Component {
 
     getLocations = async () => {
         let res = await axios.get('http://localhost:5000/api/location');
-        this.setState({locations: res.data})
+        this.setState({locations: res.data.locations})
+        console.log(res.data.locations)
     };
 
     _onClickMarker = location => {
@@ -34,8 +35,8 @@ class Map extends Component {
                 <Popup
                     tipSize={5}
                     anchor="top"
-                    longitude={CurrentMarker.longitude}
-                    latitude={CurrentMarker.latitude}
+                    longitude={Number(CurrentMarker.coordinates[0])}
+                    latitude={Number(CurrentMarker.coordinates[1])}
                     closeOnClick={false}
                     onClose={() => this.setState({CurrentMarker: null})}
                 >
@@ -49,7 +50,7 @@ class Map extends Component {
         const {viewport} = this.state;
         return (
             <div>
-                { this.state.locations.locations === undefined ?(
+                { !Array.isArray(this.state.locations) || !this.state.locations.length ?(
                     <div><h1>Loading ... </h1></div>):(
                 <ReactMapGL {...viewport}
                             width="100vw"
@@ -65,9 +66,10 @@ class Map extends Component {
                     <Link to='/camera'>
                         <img className='laCamara' src= {CameraIcon} alt='icono camara'  />
                     </Link>
+
                     {
-                        this.state.locations.locations.map(location => (
-                                <Marker key={location.name} longitude={location.longitude} latitude={location.latitude}>
+                        this.state.locations.map(location => (
+                                <Marker key={location.name} longitude={Number(location.coordinates[0])} latitude={Number(location.coordinates[1])}>
                                     <button
                                         onClick={() => {
                                             this._onClickMarker(location);
@@ -76,7 +78,8 @@ class Map extends Component {
                                     <img src={CustomMarker}/>
                                     </button>
                                 </Marker>
-                            ))}
+                            ))
+                    }
                     {
                         this._renderPopup()
                     }
