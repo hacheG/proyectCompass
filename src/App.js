@@ -11,8 +11,8 @@ class App extends Component {
       return (
         <div className='App'>
             <Router>
-                <Map />
-                <Route path='/camera' component={ camera }/>
+                <Route exact path="/" component={ Map } />
+                <Route exact path='/camera' component={ camera }/>
             </Router>
         </div>
       );

@@ -1,9 +1,27 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom'
 import Camera from 'react-html5-camera-photo';
 import download from 'downloadjs';
 import axios from "axios";
+import './camera.css';
 
 class Camara extends React.Component {
+
+    state = {
+        redirect: false
+    };
+
+    setRedirect = () => {
+        this.setState({
+            redirect: true
+        })
+    };
+
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <Redirect to='/' />
+        }
+    };
 
     async handleTakePhoto (dataUri) {
         navigator.geolocation.getCurrentPosition(position=> {
@@ -24,19 +42,20 @@ class Camara extends React.Component {
             })
         });
         download(dataUri, "dlDataUrlText.png", "image/png");
+
+        this.setRedirect();
     }
 
     render() {
         return(
-            <div>
-                <h1>camera</h1>
+            <div className="camera">
                 <Camera
                     onTakePhoto = { (dataUri) => {
                         this.handleTakePhoto(dataUri);
                     } }
                 />
+                {this.renderRedirect()}
             </div>
-
         );
     }
 }
