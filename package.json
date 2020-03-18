@@ -20,9 +20,11 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-html5-camera-photo": "^1.5.4",
+    "react-images": "^1.1.0",
     "react-leaflet": "^2.6.1",
     "react-leaflet-locate-control": "^0.1.6",
     "react-map-gl": "^5.2.3",
+    "react-photo-gallery": "^8.0.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0"
   },

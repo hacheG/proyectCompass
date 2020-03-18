@@ -15,7 +15,7 @@ img{
 
 
 .mapboxgl-ctrl-bottom-left,
-.mapboxgl-ctrl-bottom-right {  
+.mapboxgl-ctrl-bottom-right {
     display: none !important;
 }
 
