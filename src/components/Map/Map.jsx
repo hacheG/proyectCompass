@@ -50,7 +50,7 @@ class Map extends Component {
     render() {
         const {viewport} = this.state;
         return (
-            <div>
+            <div className="Map">
                 { !Array.isArray(this.state.locations) || !this.state.locations.length ?(
                     <div><h1>Loading ... </h1></div>):(
                 <ReactMapGL {...viewport}
