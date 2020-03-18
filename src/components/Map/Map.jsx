@@ -40,8 +40,8 @@ class Map extends Component {
                     closeOnClick={false}
                     onClose={() => this.setState({CurrentMarker: null})}
                 >
-                    <h1>{ CurrentMarker.name } </h1>
-                    <img src={CurrentMarker.image} />
+                    <h1 className="h1BoxMap-jsx">{ CurrentMarker.name } </h1>
+                    <img src={CurrentMarker.image} className="thePhoto" />
                 </Popup>
             )
         );

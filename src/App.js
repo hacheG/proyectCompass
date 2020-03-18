@@ -14,12 +14,12 @@ class App extends Component {
             <Router>
                 <nav className="navigator">
                     <ul>
-                        <li><Link to="/">Map<img src="https://img.icons8.com/android/24/000000/map.png"/></Link></li>
-                        <li><Link to="/photos">Photos <img src="https://img.icons8.com/dotty/80/000000/photo-editor.png"/></Link></li>
-                        <li><Link to="/ranking">Ranking <img src="https://img.icons8.com/small/16/000000/ranking.png"/></Link></li>
+                        <li><Link to="/" className="elName" >Map<img src="https://img.icons8.com/android/24/000000/map.png" className="iconite" /></Link></li>
+                        <li><Link to="/photos">Photos <img src="https://img.icons8.com/dotty/80/000000/photo-editor.png" className="iconite"/></Link></li>
+                        <li><Link to="/ranking">Ranking <img src="https://img.icons8.com/small/16/000000/ranking.png" className="iconite"/></Link></li>
                     </ul>
                 </nav>
-                <Switch>
+                <Switch>border:5px solid whitesmoke;
                     <Route exact path="/" component={ Map } />
                     <Route exact path='/camera' component={ camera }/>
                     <Route exact path='/photos' component={ Photos }/>
