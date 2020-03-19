@@ -3,6 +3,11 @@
     height: 42px;
 }
 
+.laCamara{
+    width: 50px !important;
+    height: 50px !important;
+}
+
 .mapboxgl-ctrl-group {
     width: 30px;
     background: red;
@@ -34,4 +39,20 @@
 .thePhoto {
     width: 150px !important;
     height: 100px !important;
+}
+
+.Percentage{
+    position: absolute;
+    z-index: 1;
+    top:25px;
+    left: 25px;
+}
+
+.react-sweet-progress-symbol-absolute .react-sweet-progress-symbol{
+    color: #fff;
+}
+
+.react-sweet-progress-circle-outer{
+    width: 75px !important;
+    height: 75px !important;
 }

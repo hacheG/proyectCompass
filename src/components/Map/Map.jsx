@@ -2,8 +2,10 @@ import React, { Component, PureComponent } from "react";
 import ReactMapGL, {GeolocateControl, Marker, Popup} from "react-map-gl";
 import CameraIcon from "../Mapa/CameraIcon.png";
 import {Link} from "react-router-dom";
+import { Progress } from 'react-sweet-progress';
 import CustomMarker from './Marker.svg';
 import './Map.css'
+import 'react-sweet-progress/lib/style.css'
 import axios from "axios";
 
 class Map extends Component {
@@ -51,8 +53,15 @@ class Map extends Component {
         const {viewport} = this.state;
         return (
             <div className="Map">
+
                 { !Array.isArray(this.state.locations) || !this.state.locations.length ?(
                     <div><h1>Loading ... </h1></div>):(
+                        <div>
+                            <div className="Percentage">
+                                <Progress type="circle" percent={45} status="active" />
+                                <h4>Bogota</h4>
+                            </div>
+
                 <ReactMapGL {...viewport}
                             width="100vw"
                             height="100vh"
@@ -85,6 +94,7 @@ class Map extends Component {
                         this._renderPopup()
                     }
                 </ReactMapGL>
+                    </div>
                     )}
             </div>
         );

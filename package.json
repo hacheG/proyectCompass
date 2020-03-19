@@ -17,6 +17,7 @@
     "mapbox-gl": "^1.8.1",
     "mongoose": "^5.9.4",
     "osm": "^1.0.0",
+    "rc-progress": "^2.5.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-html5-camera-photo": "^1.5.4",
@@ -26,7 +27,8 @@
     "react-map-gl": "^5.2.3",
     "react-photo-gallery": "^8.0.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.0"
+    "react-scripts": "3.4.0",
+    "react-sweet-progress": "^1.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
